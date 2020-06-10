@@ -1,0 +1,11 @@
+--- Makefile.am	2020-06-08 16:00:11.000000000 +0200
++++ Makefile.am_orig	2019-12-03 22:25:04.000000000 +0100
+@@ -6,7 +6,7 @@
+ 
+ # Process this file with automake to produce Makefile.in
+ 
+-SUBDIRS = src build data man 
++SUBDIRS = src build data man doc
+ 
+ # COMMON_EXTRA_DIST is what used to be the EXTRA_DIST, when adding dist
+ # files, please add them to the COMMON_EXTRA_DIST list.
