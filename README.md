@@ -12,15 +12,15 @@ Blocks to be used in the current architecture:
 4) VICE 3.4
 
 ## Dependencies from piCorePlayer
-rpi-vc
-rpi-vc-dev
-libpng
-libpng-dev
-readline-dev
-automake (to regenerate Makefiles after disabling VICE doc folder)
-autoconf (to regenerate Makefiles after disabling VICE doc folder)
-libasound
-libasound-dev
+- rpi-vc
+- rpi-vc-dev
+- libpng
+- libpng-dev
+- readline-dev
+- automake (to regenerate Makefiles after disabling VICE doc folder)
+- autoconf (to regenerate Makefiles after disabling VICE doc folder)
+- libasound
+- libasound-dev
 
 ## Dependencies to build VICE
 (Hint: If you don't like to build on your own find some prebuild tcz in the release section in GitHub)
