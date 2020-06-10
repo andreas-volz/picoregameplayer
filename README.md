@@ -39,7 +39,17 @@ libasound-dev
   - Get the source from here: https://vice-emu.sourceforge.io/index.html#download
   - I used vice-3.4 for this PoC.
   - Apply the patch in this GitHub project (patches/vice-3.4.patch) to SDL source
+  - depending on your free RAM ad SWAP you might have to add a swap partition. Otherwise the VICE build may break with a compiler error. After I added and activated 2GB it worked perfect. Please search and read Tiny Core documentation how to do this.
   - Call './configure --enable-x64 --enable-sdlui --disable-sdlui2 --disable-hwscale && make' to start the build process
   - follow the Tiny Core instructions[1] to build/install a vice.tcz package 
+  
+## Run C64 games with VICE
+For the current state of development in this PoC I kill the JiveLite process (if running) to have full SDL framebuffer access. I'll write some more words in chapter below. Just to demonstrate the PoC do:
+- ps -A | grep jivelite
+- You'll find the jivelite process, the starter script and the grep call itself. Kill the first two.
+- kill -9 <pid>
+- Copy a C64 ROM (for sure one you ripped before from you own original buyed games...) to a folder on your RPI
+- sudo SDL1_VIDEODRIVER="fbcon" x64 +truedrive <ROM.d64>
+   
   
 [1] http://tinycorelinux.net/corebook.pdf (page 73ff)
