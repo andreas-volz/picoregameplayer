@@ -47,7 +47,7 @@ Blocks to be used in the current architecture:
 For the current state of development in this PoC I kill the JiveLite process (if running) to have full SDL framebuffer access. I'll write some more words in chapter below. Just to demonstrate the PoC do:
 - ps -A | grep jivelite
 - You'll find the jivelite process, the starter script and the grep call itself. Kill the first two.
-- kill -9 \<pid\>
+- kill \<pid\>
 - Copy a C64 ROM (for sure one you ripped before from you own original buyed games...) to a folder on your RPI
 - sudo SDL1_VIDEODRIVER="fbcon" x64 +truedrive <ROM.d64>
 
