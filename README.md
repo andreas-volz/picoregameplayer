@@ -64,6 +64,7 @@ A collection of some raw design ideas and challenges I had while developing that
   - One possible design to solve the keyboard problem would be to write a minimal "window manager" SDL application which starts before JiveLite, grabs the keyboard input and distribute keys (either in a specific mainloop) or any virtual tty approach to the application which has focus (VICE or JiveLite).
   - A possible keyboard workaround could to close/kill JiveLite before I run VICE and start it again afterwards. But only as workaround a good design needs to be created.
   - Depending on further experiments I'll choose for one of those ways or decide for another base architecture (wayland, SDL2, DirectFB,...)
+  - Even better idea is to use https://www.libretro.com/index.php/api/ with https://github.com/libretro/vice-libretro which offers a on-screen keyboard. I've to see if this compiles out-of-the-box on piCorePlayer and SDL1.2.
 - Other Emulators could be supported (NES,...)
 - Develop a JiveLite Applet to run a emulation selector menu and write a LMS plugin that reads gamegui.xml from RetroPie/EmulationStation installation on the server Raspberry. The server could provide ROMs then on the fly on request.
 
