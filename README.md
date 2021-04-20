@@ -51,6 +51,9 @@ For the current state of development in this PoC I kill the JiveLite process (if
 - Copy a C64 ROM (for sure one you ripped before from you own original buyed games...) to a folder on your RPI
 - sudo SDL1_VIDEODRIVER="fbcon" x64 +truedrive <ROM.d64>
 
+## Jive Applet
+Find in folder jive-applet/GamePlayer an example applet how a Jive Applet could be started. The current applet design quits JiveLite and returns a handler integer to a modified JiveLite start script. This starts then VICE with a specific game loaded. Next startup it returns to JiveLite.
+
 ## Open topics / design challenges
 A collection of some raw design ideas and challenges I had while developing that PoC:
 - SDL2 for piCorePlayer as base for VICE
