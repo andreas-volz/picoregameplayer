@@ -53,6 +53,7 @@ For the current state of development in this PoC I kill the JiveLite process (if
 
 ## Jive Applet
 Find in folder jive-applet/GamePlayer an example applet how a Jive Applet could be started. The current applet design quits JiveLite and returns a handler integer to a modified JiveLite start script. This starts then VICE with a specific game loaded. Next startup it returns to JiveLite.
+(see: http://wiki.slimdevices.com/index.php/SqueezePlay_Applet_Developing_Guide)
 
 ## Open topics / design challenges
 A collection of some raw design ideas and challenges I had while developing that PoC:
@@ -65,7 +66,7 @@ A collection of some raw design ideas and challenges I had while developing that
   - To check if this problem would also exist with SDL2
   - It's possible to run two SDL application at the same time, but only the first one started get's keyboard control (see SDL-1.2.15.patch: for ( i = 0; i<nread; ++i)...). So if I run VICE without killing JiveLite before I couldn't use keyboard input (only virtual VICE keyboard).
   - One possible design to solve the keyboard problem would be to write a minimal "window manager" SDL application which starts before JiveLite, grabs the keyboard input and distribute keys (either in a specific mainloop) or any virtual tty approach to the application which has focus (VICE or JiveLite).
-  - A possible keyboard workaround could to close/kill JiveLite before I run VICE and start it again afterwards. But only as workaround a good design needs to be created.
+  - A possible keyboard workaround could to close/kill JiveLite before I run VICE and start it again afterwards. But only as workaround a good design needs to be created. (see example in jivelite.sh + the Jive Applet example)
   - Depending on further experiments I'll choose for one of those ways or decide for another base architecture (wayland, SDL2, DirectFB,...)
   - Even better idea is to use https://www.libretro.com/index.php/api/ with https://github.com/libretro/vice-libretro which offers a on-screen keyboard. I've to see if this compiles out-of-the-box on piCorePlayer and SDL1.2.
 - Other Emulators could be supported (NES,...)
