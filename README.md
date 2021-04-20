@@ -12,15 +12,15 @@ Blocks to be used in the current architecture:
 4) VICE 3.4
 
 ## Dependencies from piCorePlayer
-rpi-vc
-rpi-vc-dev
-libpng
-libpng-dev
-readline-dev
-automake (to regenerate Makefiles after disabling VICE doc folder)
-autoconf (to regenerate Makefiles after disabling VICE doc folder)
-libasound
-libasound-dev
+- rpi-vc
+- rpi-vc-dev
+- libpng
+- libpng-dev
+- readline-dev
+- automake (to regenerate Makefiles after disabling VICE doc folder)
+- autoconf (to regenerate Makefiles after disabling VICE doc folder)
+- libasound
+- libasound-dev
 
 ## Dependencies to build VICE
 (Hint: If you don't like to build on your own find some prebuild tcz in the release section in GitHub)
@@ -47,9 +47,25 @@ libasound-dev
 For the current state of development in this PoC I kill the JiveLite process (if running) to have full SDL framebuffer access. I'll write some more words in chapter below. Just to demonstrate the PoC do:
 - ps -A | grep jivelite
 - You'll find the jivelite process, the starter script and the grep call itself. Kill the first two.
-- kill -9 <pid>
+- kill \<pid\>
 - Copy a C64 ROM (for sure one you ripped before from you own original buyed games...) to a folder on your RPI
 - sudo SDL1_VIDEODRIVER="fbcon" x64 +truedrive <ROM.d64>
-   
-  
+
+## Open topics / design challenges
+A collection of some raw design ideas and challenges I had while developing that PoC:
+- SDL2 for piCorePlayer as base for VICE
+  - Might have better hardware support
+  - I get managed to compile SDL2, but failed to run any demo applications because it wasn't able to find a display. Don't remember the exact error message
+  - Might conflict with a running JiveLite that is compiled against SDL1.2
+  - Maybe it's possible to compile also JiveLite against SDL2
+- Conflict runnning JiveLite and VICE on the same SDL framebuffer
+  - To check if this problem would also exist with SDL2
+  - It's possible to run two SDL application at the same time, but only the first one started get's keyboard control (see SDL-1.2.15.patch: for ( i = 0; i<nread; ++i)...). So if I run VICE without killing JiveLite before I couldn't use keyboard input (only virtual VICE keyboard).
+  - One possible design to solve the keyboard problem would be to write a minimal "window manager" SDL application which starts before JiveLite, grabs the keyboard input and distribute keys (either in a specific mainloop) or any virtual tty approach to the application which has focus (VICE or JiveLite).
+  - A possible keyboard workaround could to close/kill JiveLite before I run VICE and start it again afterwards. But only as workaround a good design needs to be created.
+  - Depending on further experiments I'll choose for one of those ways or decide for another base architecture (wayland, SDL2, DirectFB,...)
+  - Even better idea is to use https://www.libretro.com/index.php/api/ with https://github.com/libretro/vice-libretro which offers a on-screen keyboard. I've to see if this compiles out-of-the-box on piCorePlayer and SDL1.2.
+- Other Emulators could be supported (NES,...)
+- Develop a JiveLite Applet to run a emulation selector menu and write a LMS plugin that reads gamegui.xml from RetroPie/EmulationStation installation on the server Raspberry. The server could provide ROMs then on the fly on request.
+
 [1] http://tinycorelinux.net/corebook.pdf (page 73ff)
