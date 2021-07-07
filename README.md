@@ -39,7 +39,7 @@ Blocks to be used in the current architecture:
   - Get the source from here: https://vice-emu.sourceforge.io/index.html#download
   - I used vice-3.4 for this PoC.
   - Apply the patch in this GitHub project (patches/vice-3.4.patch) to VICE source
-  - depending on your free RAM ad SWAP you might have to add a swap partition. Otherwise the VICE build may break with a compiler error. After I added and activated 2GB it worked perfect. Please search and read Tiny Core documentation how to do this.
+  - depending on your free RAM ad SWAP ('cat /proc/meminfo') you might have to add a swap partition. Otherwise the VICE build may break with a compiler error. After I added and activated 2GB it worked perfect. Please search and read Tiny Core documentation how to do this (or google for 'mkswap' and 'swapon' for examples)
   - Call './configure --enable-x64 --enable-sdlui --disable-sdlui2 --disable-hwscale && make' to start the build process
   - follow the Tiny Core instructions[1] to build/install a vice.tcz package 
   
